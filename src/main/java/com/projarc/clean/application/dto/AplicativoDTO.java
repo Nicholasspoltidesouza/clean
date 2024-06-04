@@ -1,5 +1,7 @@
 package com.projarc.clean.application.dto;
 
+import com.projarc.clean.domain.models.AplicativoModel;
+
 public class AplicativoDTO {
 
     private Long id;
@@ -41,5 +43,9 @@ public class AplicativoDTO {
         return "AplicativoDTO [id=" + id + ", nome=" + nome + ", custoMensal=" + custoMensal + ", getId()=" + getId()
                 + ", getNome()=" + getNome() + ", getCustoMensal()=" + getCustoMensal() + ", getClass()=" + getClass()
                 + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+    }
+
+    public static AplicativoDTO fromModel(AplicativoModel a) {
+        return new AplicativoDTO(a.getId(), a.getNome(), a.getCustoMensal());
     }
 }

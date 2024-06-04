@@ -46,17 +46,21 @@ public class Pagamento {
         this.promocao = promocao;
     }
 
-    public PagamentoModel toPagamentoModel() {
-        return new PagamentoModel(this.id, this.assinatura.toAssinaturaModel(assinatura), this.valorPago, this.dataPagamento, this.promocao);
+    public static PagamentoModel toPagamentoModel(Pagamento pagamento) {
+        return new PagamentoModel(
+                pagamento.getId(),
+                pagamento.getAssinatura().toAssinaturaModel(),
+                pagamento.getValorPago(),
+                pagamento.getDataPagamento(),
+                pagamento.getPromocao());
     }
 
     public static Pagamento fromPagamentoModel(PagamentoModel pagamentoModel) {
         return new Pagamento(
-            pagamentoModel.getId(),
-            Assinatura.fromAssinaturaModel(pagamentoModel.getAssinatura()),
-            pagamentoModel.getValorPago(),
-            pagamentoModel.getDataPagamento(),
-            pagamentoModel.getPromocao()
-        );
+                pagamentoModel.getId(),
+                Assinatura.fromAssinaturaModel(pagamentoModel.getAssinatura()),
+                pagamentoModel.getValorPago(),
+                pagamentoModel.getDataPagamento(),
+                pagamentoModel.getPromocao());
     }
 }

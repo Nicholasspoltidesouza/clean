@@ -66,7 +66,7 @@ public class Assinatura {
                 this.getStatus());
     }
 
-    public Assinatura fromAssinaturaModel(AssinaturaModel assinaturaModel) {
+    public static Assinatura fromAssinaturaModel(AssinaturaModel assinaturaModel) {
         Cliente cliente = Cliente.fromClienteModel(assinaturaModel.getCliente());
         Aplicativo aplicativo = Aplicativo.fromAplicativoModel(assinaturaModel.getAplicativo());
         return new Assinatura(

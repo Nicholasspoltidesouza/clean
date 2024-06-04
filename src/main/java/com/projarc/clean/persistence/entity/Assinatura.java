@@ -1,0 +1,71 @@
+package com.projarc.clean.persistence.entity;
+
+import java.util.Date;
+
+import com.projarc.clean.domain.models.AssinaturaModel;
+import com.projarc.clean.persistence.enumeration.AssinaturaStatusEnum;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@Data
+@Entity
+@Table(name = "assinaturas", uniqueConstraints = @UniqueConstraint(columnNames = { "id" }))
+public class Assinatura {
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "aplicativo_id")
+    private Aplicativo aplicativo;
+
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
+    private Cliente cliente;
+
+    @Column(name = "data_inicio")
+    private Date dataInicio;
+
+    @Column(name = "data_fim")
+    private Date dataFim;
+
+    @Enumerated(EnumType.ORDINAL)
+    private AssinaturaStatusEnum status;
+
+    public Assinatura(Long id, Aplicativo aplicativo, Cliente cliente, Date dataInicio, Date dataFim,
+            AssinaturaStatusEnum status) {
+        this.id = id;
+        this.aplicativo = aplicativo;
+        this.cliente = cliente;
+        this.dataInicio = dataInicio;
+        this.dataFim = dataFim;
+        this.status = status;
+    }
+
+    public AssinaturaModel toAssinaturaModel(Assinatura assinatura) {
+        return new AssinaturaModel(assinatura.getId(), assinatura.getCliente().toClienteModel(),
+                assinatura.getAplicativo().toAplicativoModel(), assinatura.getDataInicio(), assinatura.getDataFim(),
+                assinatura.getStatus());
+    }
+
+    public Assinatura fromAssinaturaModel(AssinaturaModel assinaturaModel) {
+        return new Assinatura(assinaturaModel.getId(), assinaturaModel.getAplicativo().fromAplicativoModel(),
+                assinaturaModel.getCliente().fromClienteModel(), assinaturaModel.getDataInicio(),
+                assinaturaModel.getDataFim(), assinaturaModel.getStatus());
+    }
+
+}

@@ -56,16 +56,25 @@ public class Assinatura {
         this.status = status;
     }
 
-    public AssinaturaModel toAssinaturaModel(Assinatura assinatura) {
-        return new AssinaturaModel(assinatura.getId(), assinatura.getCliente().toClienteModel(),
-                assinatura.getAplicativo().toAplicativoModel(), assinatura.getDataInicio(), assinatura.getDataFim(),
-                assinatura.getStatus());
+    public AssinaturaModel toAssinaturaModel() {
+        return new AssinaturaModel(
+                this.getId(),
+                this.getCliente().toClienteModel(cliente),
+                this.getAplicativo().toAplicativoModel(aplicativo),
+                this.getDataInicio(),
+                this.getDataFim(),
+                this.getStatus());
     }
 
     public Assinatura fromAssinaturaModel(AssinaturaModel assinaturaModel) {
-        return new Assinatura(assinaturaModel.getId(), assinaturaModel.getAplicativo().fromAplicativoModel(),
-                assinaturaModel.getCliente().fromClienteModel(), assinaturaModel.getDataInicio(),
-                assinaturaModel.getDataFim(), assinaturaModel.getStatus());
+        Cliente cliente = Cliente.fromClienteModel(assinaturaModel.getCliente());
+        Aplicativo aplicativo = Aplicativo.fromAplicativoModel(assinaturaModel.getAplicativo());
+        return new Assinatura(
+                assinaturaModel.getId(),
+                aplicativo,
+                cliente,
+                assinaturaModel.getDataInicio(),
+                assinaturaModel.getDataFim(),
+                assinaturaModel.getStatus());
     }
-
 }

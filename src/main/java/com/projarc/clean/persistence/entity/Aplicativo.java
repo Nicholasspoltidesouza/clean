@@ -28,11 +28,11 @@ public class Aplicativo {
         this.custoMensal = custoMensal;
     }
 
-    public Aplicativo fromAplicativoModel(AplicativoModel aplicativoModel) {
+    public static Aplicativo fromAplicativoModel(AplicativoModel aplicativoModel) {
         return new Aplicativo(aplicativoModel.getId(), aplicativoModel.getNome(), aplicativoModel.getCustoMensal());
     }
 
-    public AplicativoModel toAplicativoModel() {
-        return new AplicativoModel(this.id, this.nome, this.custoMensal);
+    public static AplicativoModel toAplicativoModel(Aplicativo aplicativo) {
+        return new AplicativoModel(aplicativo.getId(), aplicativo.getNome(), aplicativo.getCustoMensal());
     }
 }

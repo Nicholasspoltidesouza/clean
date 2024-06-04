@@ -1,27 +1,36 @@
 package com.projarc.clean.domain.service;
 
+import java.util.Calendar;
+import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Service;
+
 import com.projarc.clean.domain.models.AplicativoModel;
 import com.projarc.clean.domain.models.AssinaturaModel;
 import com.projarc.clean.domain.models.ClienteModel;
 import com.projarc.clean.domain.repository.IAplicativoRepository;
 import com.projarc.clean.domain.repository.IAssinaturaRepository;
 import com.projarc.clean.domain.repository.IClienteRepository;
-import com.projarc.clean.persistence.entity.Assinatura;
 import com.projarc.clean.persistence.enumeration.AssinaturaStatusEnum;
 
 import lombok.RequiredArgsConstructor;
 
-import java.util.Calendar;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-@RequiredArgsConstructor
 @Service
 public class AssinaturaService {
     private final IAssinaturaRepository assinaturaRepository;
     private final IClienteRepository clienteRepository;
     private final IAplicativoRepository aplicativoRepository;
+
+    @Autowired
+    public AssinaturaService(@Lazy IAssinaturaRepository assinaturaRepository,
+            @Lazy IClienteRepository clienteRepository,
+            @Lazy IAplicativoRepository aplicativoRepository) {
+        this.assinaturaRepository = assinaturaRepository;
+        this.clienteRepository = clienteRepository;
+        this.aplicativoRepository = aplicativoRepository;
+    }
 
     public AssinaturaModel criarAssinatura(Long codigoCliente, Long codigoAplicativo) {
         ClienteModel cliente = clienteRepository.findById(codigoCliente);
@@ -39,6 +48,7 @@ public class AssinaturaService {
 
         AssinaturaModel assinatura = new AssinaturaModel(null, cliente, aplicativo, dataInicio, dataFim,
                 AssinaturaStatusEnum.ATIVA);
-        return assinaturaRepository.save(assinatura);
+        assinaturaRepository.save(assinatura);
+        return assinatura;
     }
 }

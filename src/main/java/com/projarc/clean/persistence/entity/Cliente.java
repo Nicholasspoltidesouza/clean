@@ -25,11 +25,11 @@ public class Cliente {
         this.email = email;
     }
 
-    public Cliente fromClienteModel(ClienteModel clienteModel) {
+    public static Cliente fromClienteModel(ClienteModel clienteModel) {
         return new Cliente(clienteModel.getId(), clienteModel.getNome(), clienteModel.getEmail());
     }
 
-    public ClienteModel toClienteModel() {
-        return new ClienteModel(this.id, this.nome, this.email);
+    public static ClienteModel toClienteModel(Cliente cliente) {
+        return new ClienteModel(cliente.getId(), cliente.getNome(), cliente.getEmail());
     }
 }

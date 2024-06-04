@@ -45,9 +45,4 @@ public class ClienteModel {
                 ", email='" + email + '\'' +
                 '}';
     }
-
-    public Cliente fromClienteModel() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'fromClienteModel'");
-    }
 }

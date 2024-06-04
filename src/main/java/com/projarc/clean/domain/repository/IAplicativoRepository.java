@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface IAplicativoRepository {
     List<AplicativoModel> findAll();
+
+    AplicativoModel findById(Long codigoAplicativo);
 }

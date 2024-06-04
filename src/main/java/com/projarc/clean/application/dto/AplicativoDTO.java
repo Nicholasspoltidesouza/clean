@@ -1,11 +1,12 @@
-package com.projarc.clean.domain.models;
+package com.projarc.clean.application.dto;
 
-public class AplicativoModel {
+public class AplicativoDTO {
+
     private Long id;
     private String nome;
     private double custoMensal;
 
-    public AplicativoModel(Long id, String nome, double custoMensal) {
+    public AplicativoDTO(Long id, String nome, double custoMensal) {
         this.id = id;
         this.nome = nome;
         this.custoMensal = custoMensal;
@@ -37,10 +38,8 @@ public class AplicativoModel {
 
     @Override
     public String toString() {
-        return "AplicativoModel{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", custoMensal=" + custoMensal +
-                '}';
+        return "AplicativoDTO [id=" + id + ", nome=" + nome + ", custoMensal=" + custoMensal + ", getId()=" + getId()
+                + ", getNome()=" + getNome() + ", getCustoMensal()=" + getCustoMensal() + ", getClass()=" + getClass()
+                + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
     }
 }

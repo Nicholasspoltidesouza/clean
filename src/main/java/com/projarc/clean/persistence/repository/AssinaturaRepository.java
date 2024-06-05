@@ -10,4 +10,6 @@ import com.projarc.clean.persistence.entity.Assinatura;
 public interface AssinaturaRepository extends JpaRepository<Assinatura, Long> {
     Assinatura save(AssinaturaModel assinatura);
 
+    AssinaturaModel findByStatus(String status);
+
 }

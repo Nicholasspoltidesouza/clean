@@ -51,4 +51,8 @@ public class AssinaturaService {
         assinaturaRepository.save(assinatura);
         return assinatura;
     }
+
+    public AssinaturaModel listaAssinaturaPorTipo(String tipo) {
+        return assinaturaRepository.findByTipo(tipo);
+    }
 }

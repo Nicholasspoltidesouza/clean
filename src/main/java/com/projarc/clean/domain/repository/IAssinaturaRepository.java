@@ -5,4 +5,6 @@ import com.projarc.clean.persistence.entity.Assinatura;
 
 public interface IAssinaturaRepository {
     Assinatura save(AssinaturaModel assinatura);
+
+    AssinaturaModel findByStatus(String tipo);
 }

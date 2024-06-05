@@ -57,10 +57,12 @@ public class Assinatura {
     }
 
     public AssinaturaModel toAssinaturaModel() {
+        this.getCliente();
+        this.getAplicativo();
         return new AssinaturaModel(
                 this.getId(),
-                this.getCliente().toClienteModel(cliente),
-                this.getAplicativo().toAplicativoModel(aplicativo),
+                Cliente.toClienteModel(cliente),
+                Aplicativo.toAplicativoModel(aplicativo),
                 this.getDataInicio(),
                 this.getDataFim(),
                 this.getStatus());

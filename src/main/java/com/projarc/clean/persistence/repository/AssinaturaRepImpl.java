@@ -24,4 +24,9 @@ public class AssinaturaRepImpl implements IAssinaturaRepository {
         return save(assinatura);
     }
 
+    @Override
+    public AssinaturaModel findByStatus(String status) {
+        return assinaturaRepository.findByStatus(status);
+    }
+
 }

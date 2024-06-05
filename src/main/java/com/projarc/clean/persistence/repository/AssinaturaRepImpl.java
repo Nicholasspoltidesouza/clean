@@ -24,8 +24,9 @@ public class AssinaturaRepImpl implements IAssinaturaRepository {
     }
 
     @Override
-    public Assinatura save(AssinaturaModel assinatura) {
-        return save(assinatura);
+    public AssinaturaModel save(AssinaturaModel assinatura) {
+        assinaturaRepository.save(Assinatura.fromAssinaturaModel(assinatura));
+        return assinatura;
     }
 
     @Override
@@ -39,4 +40,9 @@ public class AssinaturaRepImpl implements IAssinaturaRepository {
         return assinaturaRepository.findAll().stream().map(Assinatura::toAssinaturaModel).collect(Collectors.toList());
     }
 
+    @Override
+    public List<AssinaturaModel> findAllByClienteId(Long codigoCliente) {
+        return assinaturaRepository.findAllByClienteId(codigoCliente).stream().map(Assinatura::toAssinaturaModel)
+                .collect(Collectors.toList());
+    }
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.projarc.clean.domain.models.AplicativoModel;
 import com.projarc.clean.domain.repository.IAplicativoRepository;
+import com.projarc.clean.persistence.entity.Aplicativo;
 
 import lombok.RequiredArgsConstructor;
 
@@ -25,5 +26,12 @@ public class AplicativoService {
 
     public AplicativoModel buscarPorId(Long id) {
         return aplicativoRepository.findById(id);
+    }
+
+    public AplicativoModel atualizarCusto(Long idAplicativo, Double custoMensal) {
+        AplicativoModel aplicativo = aplicativoRepository.findById(idAplicativo);
+        aplicativo.setCustoMensal(custoMensal);
+        aplicativoRepository.save(aplicativo);
+        return aplicativo;
     }
 }

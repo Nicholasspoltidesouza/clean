@@ -7,9 +7,11 @@ import com.projarc.clean.persistence.entity.Assinatura;
 import com.projarc.clean.persistence.enumeration.AssinaturaStatusEnum;
 
 public interface IAssinaturaRepository {
-    Assinatura save(AssinaturaModel assinatura);
+    AssinaturaModel save(AssinaturaModel assinatura);
 
     List<AssinaturaModel> findAllByStatus(AssinaturaStatusEnum status);
 
     List<AssinaturaModel> findAll();
+
+    List<AssinaturaModel> findAllByClienteId(Long codigoCliente);
 }

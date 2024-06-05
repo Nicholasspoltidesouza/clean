@@ -37,20 +37,19 @@ public class AssinaturaService {
         this.assinaturaRepository = assinaturaRepository;
     }
 
-    public AssinaturaModel criarAssinatura(AssinaturaNovaDTO assinaturaNova) {
-        ClienteModel cliente = clienteRepository.findById(assinaturaNova.getCodigoCliente());
-        AplicativoModel aplicativo = aplicativoRepository.findById(assinaturaNova.getCodigoAplicativo());
+    public AssinaturaModel criarAssinatura(Long codigoCliente, Long codigoAplicativo) {
+        ClienteModel cliente = clienteRepository.findById(codigoCliente);
+        AplicativoModel aplicativo = aplicativoRepository.findById(codigoAplicativo);
 
         AssinaturaModel assinatura = new AssinaturaModel();
         assinatura.setCliente(cliente);
         assinatura.setAplicativo(aplicativo);
         assinatura.setDataInicio(Date.valueOf(LocalDate.now()));
-        assinatura.setDataFim(Date.valueOf(LocalDate.now().plusMonths(1)));
+        assinatura.setDataFim(Date.valueOf(LocalDate.now().plusDays(7)));
         assinatura.setStatus(AssinaturaStatusEnum.ATIVA);
 
         assinaturaRepository.save(assinatura);
         return assinatura;
-
     }
 
     public List<AssinaturaModel> listaAssinaturaPorTipo(AssinaturaStatusEnum tipo) {
@@ -59,5 +58,9 @@ public class AssinaturaService {
 
     public List<AssinaturaModel> listaTodasAssinaturas() {
         return assinaturaRepository.findAll();
+    }
+
+    public List<AssinaturaModel> listarAssinaturasDeUmCliente(Long codigoCliente) {
+        return assinaturaRepository.findAllByClienteId(codigoCliente);
     }
 }

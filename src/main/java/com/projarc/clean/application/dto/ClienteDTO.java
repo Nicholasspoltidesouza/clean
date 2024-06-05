@@ -8,6 +8,9 @@ public class ClienteDTO {
     private String nome;
     private String email;
 
+    public ClienteDTO() {
+    }
+
     public ClienteDTO(Long id, String nome, String email) {
         this.id = id;
         this.nome = nome;
@@ -36,10 +39,6 @@ public class ClienteDTO {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public static ClienteDTO fromModel(ClienteModel c) {
-        return new ClienteDTO(c.getId(), c.getNome(), c.getEmail());
     }
 
     @Override

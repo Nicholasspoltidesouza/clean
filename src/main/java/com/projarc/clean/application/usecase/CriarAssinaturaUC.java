@@ -15,7 +15,8 @@ public class CriarAssinaturaUC {
 
     private final AssinaturaService assinaturaService;
 
-    public AssinaturaDTO run(AssinaturaNovaDTO assinatura) {
-        return Assinatura.fromModelToDTO(assinaturaService.criarAssinatura(assinatura));
+    public AssinaturaDTO run(Long codigoCliente, Long codigoAplicativo) {
+        return Assinatura.fromModelToDTO(
+                assinaturaService.criarAssinatura(codigoCliente, codigoAplicativo));
     }
 }

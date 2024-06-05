@@ -30,4 +30,10 @@ public class AplicativoRepImpl implements IAplicativoRepository {
     public AplicativoModel findById(Long codigoAplicativo) {
         return aplicativoRepository.findById(codigoAplicativo).map(Aplicativo::toAplicativoModel).orElse(null);
     }
+
+    @Override
+    public AplicativoModel save(AplicativoModel aplicativo) {
+        aplicativoRepository.save(Aplicativo.fromAplicativoModel(aplicativo));
+        return aplicativo;
+    }
 }

@@ -13,4 +13,6 @@ public interface AplicativoRepository extends JpaRepository<Aplicativo, Long> {
     List<Aplicativo> findAll();
 
     Optional<Aplicativo> findById(Long codigo);
+
+    Aplicativo save(Aplicativo aplicativo);
 }

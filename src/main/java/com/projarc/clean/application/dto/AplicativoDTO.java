@@ -8,6 +8,9 @@ public class AplicativoDTO {
     private String nome;
     private double custoMensal;
 
+    public AplicativoDTO() {
+    }
+
     public AplicativoDTO(Long id, String nome, double custoMensal) {
         this.id = id;
         this.nome = nome;
@@ -43,9 +46,5 @@ public class AplicativoDTO {
         return "AplicativoDTO [id=" + id + ", nome=" + nome + ", custoMensal=" + custoMensal + ", getId()=" + getId()
                 + ", getNome()=" + getNome() + ", getCustoMensal()=" + getCustoMensal() + ", getClass()=" + getClass()
                 + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
-    }
-
-    public static AplicativoDTO fromModel(AplicativoModel a) {
-        return new AplicativoDTO(a.getId(), a.getNome(), a.getCustoMensal());
     }
 }

@@ -13,6 +13,9 @@ public class AssinaturaDTO {
     private Date dataFim;
     private AssinaturaStatusEnum status;
 
+    public AssinaturaDTO() {
+    }
+
     public AssinaturaDTO(Long id, ClienteDTO cliente, AplicativoDTO aplicativo, Date dataInicio, Date dataFim,
             AssinaturaStatusEnum assinaturaStatusEnum) {
         this.id = id;

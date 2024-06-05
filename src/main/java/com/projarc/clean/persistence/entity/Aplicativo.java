@@ -43,4 +43,5 @@ public class Aplicativo {
     public static AplicativoDTO fromModelToDTO(AplicativoModel aplicativo) {
         return new AplicativoDTO(aplicativo.getId(), aplicativo.getNome(), aplicativo.getCustoMensal());
     }
+
 }

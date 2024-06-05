@@ -4,6 +4,9 @@ public class AssinaturaNovaDTO {
     private Long codigoCliente;
     private Long codigoAplicativo;
 
+    public AssinaturaNovaDTO() {
+    }
+
     public AssinaturaNovaDTO(Long codigoCliente, Long codigoAplicativo) {
         this.codigoCliente = codigoCliente;
         this.codigoAplicativo = codigoAplicativo;

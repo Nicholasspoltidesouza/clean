@@ -13,6 +13,9 @@ public class PagamentoDTO {
     private String promocao;
     private PagamentoStatusEnum status;
 
+    public PagamentoDTO() {
+    }
+
     public PagamentoDTO(Long id, Assinatura assinatura, Float valorPago, Date dataPagamento, String promocao,
             PagamentoStatusEnum status) {
         this.id = id;

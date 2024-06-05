@@ -22,6 +22,9 @@ public class Aplicativo {
     @Column(name = "custo_mensal")
     private double custoMensal;
 
+    public Aplicativo() {
+    }
+
     public Aplicativo(Long id, String nome, double custoMensal) {
         this.id = id;
         this.nome = nome;

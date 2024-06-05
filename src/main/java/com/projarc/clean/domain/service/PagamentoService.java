@@ -18,7 +18,8 @@ public class PagamentoService {
         this.pagamentoRepository = pagamentoRepository;
     }
 
-    public PagamentoModel realizarPagamento(AssinaturaModel assinatura, Float valorPago, Date dataPagamento, String promocao) {
+    public PagamentoModel realizarPagamento(AssinaturaModel assinatura, Float valorPago, Date dataPagamento,
+            String promocao) {
         PagamentoModel pagamento = new PagamentoModel(null, assinatura, valorPago, dataPagamento, promocao);
         pagamentoRepository.save(pagamento);
         return pagamento;

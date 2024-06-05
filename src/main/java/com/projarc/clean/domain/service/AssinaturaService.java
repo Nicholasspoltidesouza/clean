@@ -24,9 +24,9 @@ public class AssinaturaService {
     private final IAplicativoRepository aplicativoRepository;
 
     @Autowired
-    public AssinaturaService(@Lazy IAssinaturaRepository assinaturaRepository,
-            @Lazy IClienteRepository clienteRepository,
-            @Lazy IAplicativoRepository aplicativoRepository) {
+    public AssinaturaService(IAssinaturaRepository assinaturaRepository,
+            IClienteRepository clienteRepository,
+            IAplicativoRepository aplicativoRepository) {
         this.assinaturaRepository = assinaturaRepository;
         this.clienteRepository = clienteRepository;
         this.aplicativoRepository = aplicativoRepository;

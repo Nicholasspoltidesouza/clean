@@ -2,6 +2,7 @@ package com.projarc.clean.persistence.entity;
 
 import java.util.Date;
 
+import com.projarc.clean.application.dto.PagamentoDTO;
 import com.projarc.clean.domain.models.PagamentoModel;
 import com.projarc.clean.persistence.enumeration.PagamentoStatusEnum;
 
@@ -31,7 +32,7 @@ public class Pagamento {
     private Assinatura assinatura;
 
     @Column(name = "valor_pago")
-    private Float valorPago;
+    private Double valorPago;
 
     @Column(name = "data_pagamento")
     private Date dataPagamento;
@@ -42,17 +43,21 @@ public class Pagamento {
     @Column(name = "status")
     private PagamentoStatusEnum status;
 
+    @Column(name = "valor_estornado")
+    private Double valorEstornado;
+
     public Pagamento() {
     }
 
-    public Pagamento(Long id, Assinatura assinatura, Float valorPago, Date dataPagamento, String promocao,
-            PagamentoStatusEnum status) {
+    public Pagamento(Long id, Assinatura assinatura, Double valorPago, Date dataPagamento, String promocao,
+            PagamentoStatusEnum status, Double valorEstornado) {
         this.id = id;
         this.assinatura = assinatura;
         this.valorPago = valorPago;
         this.dataPagamento = dataPagamento;
         this.promocao = promocao;
         this.status = status;
+        this.valorEstornado = valorEstornado;
     }
 
     public static PagamentoModel toPagamentoModel(Pagamento pagamento) {
@@ -62,7 +67,7 @@ public class Pagamento {
                 pagamento.getValorPago(),
                 pagamento.getDataPagamento(),
                 pagamento.getPromocao(),
-                pagamento.getStatus());
+                pagamento.getStatus(), pagamento.getValorEstornado());
     }
 
     public static Pagamento fromPagamentoModel(PagamentoModel pagamentoModel) {
@@ -72,6 +77,12 @@ public class Pagamento {
                 pagamentoModel.getValorPago(),
                 pagamentoModel.getDataPagamento(),
                 pagamentoModel.getPromocao(),
-                pagamentoModel.getStatus());
+                pagamentoModel.getStatus(), pagamentoModel.getValorEstornado());
+    }
+
+    public static PagamentoDTO fromModelToDTO(PagamentoModel pagamentoModel) {
+        return new PagamentoDTO(pagamentoModel.getId(), Assinatura.fromAssinaturaModel(pagamentoModel.getAssinatura()),
+                pagamentoModel.getValorPago(), pagamentoModel.getDataPagamento(), pagamentoModel.getPromocao(),
+                pagamentoModel.getStatus(), pagamentoModel.getValorEstornado());
     }
 }

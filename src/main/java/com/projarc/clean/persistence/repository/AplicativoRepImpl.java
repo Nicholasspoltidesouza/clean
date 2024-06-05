@@ -11,15 +11,13 @@ import com.projarc.clean.domain.models.AplicativoModel;
 import com.projarc.clean.domain.repository.IAplicativoRepository;
 import com.projarc.clean.persistence.entity.Aplicativo;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Repository
 @Primary
 public class AplicativoRepImpl implements IAplicativoRepository {
     private final AplicativoRepository aplicativoRepository;
-
-    @Autowired
-    public AplicativoRepImpl(AplicativoRepository aplicativoRepository) {
-        this.aplicativoRepository = aplicativoRepository;
-    }
 
     @Override
     public List<AplicativoModel> findAll() {

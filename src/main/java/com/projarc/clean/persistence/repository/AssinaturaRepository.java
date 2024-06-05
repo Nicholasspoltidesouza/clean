@@ -1,6 +1,7 @@
 package com.projarc.clean.persistence.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -19,4 +20,7 @@ public interface AssinaturaRepository extends JpaRepository<Assinatura, Long> {
 
     List<Assinatura> findAllByClienteId(Long codigoCliente);
 
+    List<Assinatura> findAllByAplicativoId(Long codigoAplicativo);
+
+    Optional<Assinatura> findById(Long codigoAssinatura);
 }

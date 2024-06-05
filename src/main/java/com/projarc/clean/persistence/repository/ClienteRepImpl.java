@@ -7,20 +7,19 @@ import java.util.stream.Collectors;
 import com.projarc.clean.domain.models.ClienteModel;
 import com.projarc.clean.domain.repository.IClienteRepository;
 import com.projarc.clean.persistence.entity.Cliente;
+
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
+@RequiredArgsConstructor
 @Repository
 @Primary
 public class ClienteRepImpl implements IClienteRepository {
 
     private final ClienteRepository clienteRepository;
-
-    @Autowired
-    public ClienteRepImpl(ClienteRepository clienteRepository) {
-        this.clienteRepository = clienteRepository;
-    }
 
     @Override
     public List<ClienteModel> findAll() {

@@ -12,15 +12,11 @@ import com.projarc.clean.persistence.entity.Assinatura;
 
 import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 @Component
 public class ListarTodasAssinaturasUC {
 
     private final AssinaturaService assinaturaService;
-
-    @Autowired
-    public ListarTodasAssinaturasUC(AssinaturaService assinaturaService) {
-        this.assinaturaService = assinaturaService;
-    }
 
     public List<AssinaturaDTO> run() {
         return assinaturaService.listaTodasAssinaturas().stream().map(Assinatura::fromModelToDTO)

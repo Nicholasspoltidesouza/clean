@@ -1,9 +1,5 @@
 package com.projarc.clean.application.usecase;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.projarc.clean.application.dto.AssinaturaDTO;
@@ -14,12 +10,13 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Component
-public class ListarAssinaturasDeUmClienteUC {
+public class AtualizarTempoAssinaturaUC {
 
     private final AssinaturaService assinaturaService;
 
-    public List<AssinaturaDTO> run(Long codigoCliente) {
-        return assinaturaService.listarAssinaturasDeUmCliente(codigoCliente).stream()
-                .map(a -> Assinatura.fromModelToDTO(a)).collect(Collectors.toList());
+    public AssinaturaDTO run(Long codigoAssinatura) {
+        return Assinatura.fromModelToDTO(
+                assinaturaService.atualizarTempoAssinatura(codigoAssinatura));
     }
+
 }

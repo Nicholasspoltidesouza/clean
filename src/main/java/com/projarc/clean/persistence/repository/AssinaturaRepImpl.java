@@ -12,16 +12,14 @@ import com.projarc.clean.domain.repository.IAssinaturaRepository;
 import com.projarc.clean.persistence.entity.Assinatura;
 import com.projarc.clean.persistence.enumeration.AssinaturaStatusEnum;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Repository
 @Primary
 public class AssinaturaRepImpl implements IAssinaturaRepository {
 
     private final AssinaturaRepository assinaturaRepository;
-
-    @Autowired
-    public AssinaturaRepImpl(AssinaturaRepository assinaturaRepository) {
-        this.assinaturaRepository = assinaturaRepository;
-    }
 
     @Override
     public AssinaturaModel save(AssinaturaModel assinatura) {
@@ -44,5 +42,16 @@ public class AssinaturaRepImpl implements IAssinaturaRepository {
     public List<AssinaturaModel> findAllByClienteId(Long codigoCliente) {
         return assinaturaRepository.findAllByClienteId(codigoCliente).stream().map(Assinatura::toAssinaturaModel)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<AssinaturaModel> findAllByAplicativoId(Long codigoAplicativo) {
+        return assinaturaRepository.findAllByAplicativoId(codigoAplicativo).stream().map(Assinatura::toAssinaturaModel)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public AssinaturaModel findById(Long codigoAssinatura) {
+        return assinaturaRepository.findById(codigoAssinatura).map(Assinatura::toAssinaturaModel).orElse(null);
     }
 }

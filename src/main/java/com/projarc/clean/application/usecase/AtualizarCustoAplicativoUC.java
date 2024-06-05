@@ -9,6 +9,8 @@ import com.projarc.clean.domain.models.AplicativoModel;
 import com.projarc.clean.domain.service.AplicativoService;
 import com.projarc.clean.persistence.entity.Aplicativo;
 
+import lombok.RequiredArgsConstructor;
+
 @Component
 public class AtualizarCustoAplicativoUC {
 

@@ -14,4 +14,8 @@ public interface IAssinaturaRepository {
     List<AssinaturaModel> findAll();
 
     List<AssinaturaModel> findAllByClienteId(Long codigoCliente);
+
+    List<AssinaturaModel> findAllByAplicativoId(Long codigoAplicativo);
+
+    AssinaturaModel findById(Long codigoAssinatura);
 }

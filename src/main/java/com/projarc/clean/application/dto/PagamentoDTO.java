@@ -8,22 +8,24 @@ import com.projarc.clean.persistence.enumeration.PagamentoStatusEnum;
 public class PagamentoDTO {
     private Long id;
     private Assinatura assinatura;
-    private Float valorPago;
+    private Double valorPago;
     private Date dataPagamento;
     private String promocao;
     private PagamentoStatusEnum status;
+    private Double valorEstornado;
 
     public PagamentoDTO() {
     }
 
-    public PagamentoDTO(Long id, Assinatura assinatura, Float valorPago, Date dataPagamento, String promocao,
-            PagamentoStatusEnum status) {
+    public PagamentoDTO(Long id, Assinatura assinatura, Double valorPago, Date dataPagamento, String promocao,
+            PagamentoStatusEnum status, Double valorEstornado) {
         this.id = id;
         this.assinatura = assinatura;
         this.valorPago = valorPago;
         this.dataPagamento = dataPagamento;
         this.promocao = promocao;
         this.status = status;
+        this.valorEstornado = valorEstornado;
     }
 
     public Long getId() {
@@ -42,11 +44,11 @@ public class PagamentoDTO {
         this.assinatura = assinatura;
     }
 
-    public Float getValorPago() {
+    public Double getValorPago() {
         return valorPago;
     }
 
-    public void setValorPago(Float valorPago) {
+    public void setValorPago(Double valorPago) {
         this.valorPago = valorPago;
     }
 
@@ -74,9 +76,18 @@ public class PagamentoDTO {
         this.status = status;
     }
 
+    public Double getValorEstornado() {
+        return valorEstornado;
+    }
+
+    public void setValorEstornado(Double valorEstornado) {
+        this.valorEstornado = valorEstornado;
+    }
+
     @Override
     public String toString() {
         return "PagamentoDTO [id=" + id + ", assinatura=" + assinatura + ", valorPago=" + valorPago + ", dataPagamento="
-                + dataPagamento + ", promocao=" + promocao + ", status=" + status + "]";
+                + dataPagamento + ", promocao=" + promocao + ", status=" + status + ", valorEstornado=" + valorEstornado
+                + "]";
     }
 }

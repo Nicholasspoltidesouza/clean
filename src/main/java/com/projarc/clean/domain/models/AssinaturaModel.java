@@ -7,7 +7,7 @@ import com.projarc.clean.persistence.enumeration.AssinaturaStatusEnum;
 public class AssinaturaModel {
     private Long id;
     private ClienteModel cliente;
-    private AplicativoModel aplicativo;
+    private static AplicativoModel aplicativo;
     private Date dataInicio;
     private Date dataFim;
     private AssinaturaStatusEnum status;
@@ -41,7 +41,7 @@ public class AssinaturaModel {
         this.cliente = cliente;
     }
 
-    public AplicativoModel getAplicativo() {
+    public static AplicativoModel getAplicativo() {
         return aplicativo;
     }
 

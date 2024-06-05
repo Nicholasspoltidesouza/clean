@@ -3,6 +3,7 @@ package com.projarc.clean.domain.service;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,21 +22,13 @@ import com.projarc.clean.persistence.enumeration.AssinaturaStatusEnum;
 
 import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 @Service
 public class AssinaturaService {
 
     private final IAplicativoRepository aplicativoRepository;
     private final IClienteRepository clienteRepository;
     private final IAssinaturaRepository assinaturaRepository;
-
-    @Autowired
-    public AssinaturaService(IAplicativoRepository aplicativoRepository,
-            IClienteRepository clienteRepository,
-            IAssinaturaRepository assinaturaRepository) {
-        this.aplicativoRepository = aplicativoRepository;
-        this.clienteRepository = clienteRepository;
-        this.assinaturaRepository = assinaturaRepository;
-    }
 
     public AssinaturaModel criarAssinatura(Long codigoCliente, Long codigoAplicativo) {
         ClienteModel cliente = clienteRepository.findById(codigoCliente);
@@ -52,6 +45,10 @@ public class AssinaturaService {
         return assinatura;
     }
 
+    public AssinaturaModel buscarPorId(Long id) {
+        return assinaturaRepository.findById(id);
+    }
+
     public List<AssinaturaModel> listaAssinaturaPorTipo(AssinaturaStatusEnum tipo) {
         return assinaturaRepository.findAllByStatus(tipo);
     }
@@ -62,5 +59,21 @@ public class AssinaturaService {
 
     public List<AssinaturaModel> listarAssinaturasDeUmCliente(Long codigoCliente) {
         return assinaturaRepository.findAllByClienteId(codigoCliente);
+    }
+
+    public List<AssinaturaModel> listarAssinaturasDeUmAplicativo(Long codigoAplicativo) {
+        return assinaturaRepository.findAllByAplicativoId(codigoAplicativo);
+    }
+
+    public boolean checarSeAssinaturaEValida(Long codigoAssinatura) {
+        return assinaturaRepository.findById(codigoAssinatura).getStatus().equals(AssinaturaStatusEnum.ATIVA);
+
+    }
+
+    public AssinaturaModel atualizarTempoAssinatura(Long codigoAssinatura) {
+        AssinaturaModel assinatura = assinaturaRepository.findById(codigoAssinatura);
+        assinatura.setDataFim(Date.valueOf(LocalDate.now().plusMonths(1)));
+        assinaturaRepository.save(assinatura);
+        return assinatura;
     }
 }

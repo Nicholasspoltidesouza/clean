@@ -18,8 +18,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 import com.projarc.clean.application.dto.AssinaturaDTO;
 import com.projarc.clean.application.dto.AssinaturaNovaDTO;
+import com.projarc.clean.application.usecase.ChecarSeAssinaturaEValidaUC;
 import com.projarc.clean.application.usecase.CriarAssinaturaUC;
 import com.projarc.clean.application.usecase.ListarAssinaturaPorTipoUC;
+import com.projarc.clean.application.usecase.ListarAssinaturasDeUmAplicativoUC;
 import com.projarc.clean.application.usecase.ListarAssinaturasDeUmClienteUC;
 import com.projarc.clean.application.usecase.ListarTodasAssinaturasUC;
 import com.projarc.clean.persistence.enumeration.AssinaturaStatusEnum;
@@ -37,6 +39,8 @@ public class AssinaturaController {
     private final ListarTodasAssinaturasUC listarTodasAssinaturasUC;
     private final CriarAssinaturaUC criarAssinaturaUC;
     private final ListarAssinaturasDeUmClienteUC listarAssinaturasDeUmClienteUC;
+    private final ListarAssinaturasDeUmAplicativoUC listarAssinaturasDeUmAplicativoUC;
+    private final ChecarSeAssinaturaEValidaUC checarSeAssinaturaEValidaUC;
 
     @Operation(description = "Lista assinaturas por tipo (todas, ativas ou canceladas)")
     @ApiResponses(value = {
@@ -76,5 +80,25 @@ public class AssinaturaController {
     @GetMapping("/asscli/{codigoCliente}")
     public ResponseEntity<List<AssinaturaDTO>> listarAssinaturasDeUmCliente(@PathVariable Long codigoCliente) {
         return ResponseEntity.ok(listarAssinaturasDeUmClienteUC.run(codigoCliente));
+    }
+
+    @Operation(description = "Lista de assinaturas de um aplicativo")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, array = @ArraySchema(schema = @Schema(implementation = AssinaturaDTO.class)))),
+            @ApiResponse(responseCode = "500", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = String.class)))
+    })
+    @GetMapping("/assapp/{codigoAplicativo}")
+    public ResponseEntity<List<AssinaturaDTO>> listarAssinaturasDeUmAplicativo(@PathVariable Long codigoAplicativo) {
+        return ResponseEntity.ok(listarAssinaturasDeUmAplicativoUC.run(codigoAplicativo));
+    }
+
+    @Operation(description = "Checa se assinatura é válida")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = Boolean.class))),
+            @ApiResponse(responseCode = "500", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = String.class)))
+    })
+    @GetMapping("/assinvalida/{codigoAssinatura}")
+    public ResponseEntity<Boolean> checarSeAssinaturaEValida(@PathVariable Long codigoAssinatura) {
+        return ResponseEntity.ok(checarSeAssinaturaEValidaUC.run(codigoAssinatura));
     }
 }

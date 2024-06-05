@@ -7,19 +7,24 @@ import com.projarc.clean.persistence.enumeration.PagamentoStatusEnum;
 public class PagamentoModel {
     private Long id;
     private AssinaturaModel assinatura;
-    private Float valorPago;
+    private Double valorPago;
     private Date dataPagamento;
     private String promocao;
     private PagamentoStatusEnum status;
+    private Double valorEstornado;
 
-    public PagamentoModel(Long id, AssinaturaModel assinatura, Float valorPago, Date dataPagamento, String promocao,
-            PagamentoStatusEnum status) {
+    public PagamentoModel(Long id, AssinaturaModel assinatura, Double valorPago, Date dataPagamento, String promocao,
+            PagamentoStatusEnum status, Double valorEstornado) {
         this.id = id;
         this.assinatura = assinatura;
         this.valorPago = valorPago;
         this.dataPagamento = dataPagamento;
         this.promocao = promocao;
         this.status = status;
+        this.valorEstornado = valorEstornado;
+    }
+
+    public PagamentoModel() {
     }
 
     public Long getId() {
@@ -38,12 +43,12 @@ public class PagamentoModel {
         this.assinatura = assinatura;
     }
 
-    public Float getValorPago() {
+    public Double getValorPago() {
         return valorPago;
     }
 
-    public void setValorPago(Float valorPago) {
-        this.valorPago = valorPago;
+    public void setValorPago(Double valorPago2) {
+        this.valorPago = valorPago2;
     }
 
     public Date getDataPagamento() {
@@ -70,6 +75,14 @@ public class PagamentoModel {
         this.status = status;
     }
 
+    public Double getValorEstornado() {
+        return valorEstornado;
+    }
+
+    public void setValorEstornado(Double valorEstornado) {
+        this.valorEstornado = valorEstornado;
+    }
+
     @Override
     public String toString() {
         return "PagamentoModel{" +
@@ -78,6 +91,6 @@ public class PagamentoModel {
                 ", valorPago=" + valorPago +
                 ", dataPagamento=" + dataPagamento +
                 ", promocao='" + promocao + '\'' +
-                '}';
+                ", status=" + status + ", valorEstornado=" + valorEstornado + '}';
     }
 }

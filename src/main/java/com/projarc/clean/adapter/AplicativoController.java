@@ -23,10 +23,12 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import lombok.RequiredArgsConstructor;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/servcad")
 public class AplicativoController {
@@ -34,13 +36,6 @@ public class AplicativoController {
     private final ListarTodosAplicativosUC listarTodosAplicativosUC;
 
     private final AtualizarCustoAplicativoUC atualizarCustoAplicativoUC;
-
-    @Autowired
-    public AplicativoController(ListarTodosAplicativosUC listarTodosAplicativosUC,
-            AtualizarCustoAplicativoUC atualizarCustoAplicativoUC) {
-        this.listarTodosAplicativosUC = listarTodosAplicativosUC;
-        this.atualizarCustoAplicativoUC = atualizarCustoAplicativoUC;
-    }
 
     @Operation(description = "Lista todos os aplicativos")
     @ApiResponses(value = {

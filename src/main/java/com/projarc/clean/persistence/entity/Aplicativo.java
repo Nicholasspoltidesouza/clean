@@ -1,5 +1,6 @@
 package com.projarc.clean.persistence.entity;
 
+import com.projarc.clean.application.dto.AplicativoDTO;
 import com.projarc.clean.domain.models.AplicativoModel;
 
 import jakarta.persistence.*;
@@ -37,5 +38,9 @@ public class Aplicativo {
 
     public static AplicativoModel toAplicativoModel(Aplicativo aplicativo) {
         return new AplicativoModel(aplicativo.getId(), aplicativo.getNome(), aplicativo.getCustoMensal());
+    }
+
+    public static AplicativoDTO fromModelToDTO(AplicativoModel aplicativo) {
+        return new AplicativoDTO(aplicativo.getId(), aplicativo.getNome(), aplicativo.getCustoMensal());
     }
 }

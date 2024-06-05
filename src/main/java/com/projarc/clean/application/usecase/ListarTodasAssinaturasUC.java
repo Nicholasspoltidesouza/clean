@@ -9,22 +9,21 @@ import org.springframework.stereotype.Component;
 import com.projarc.clean.application.dto.AssinaturaDTO;
 import com.projarc.clean.domain.service.AssinaturaService;
 import com.projarc.clean.persistence.entity.Assinatura;
-import com.projarc.clean.persistence.enumeration.AssinaturaStatusEnum;
 
 import lombok.RequiredArgsConstructor;
 
 @Component
-public class ListarAssinaturaPorTipoUC {
+public class ListarTodasAssinaturasUC {
 
     private final AssinaturaService assinaturaService;
 
     @Autowired
-    public ListarAssinaturaPorTipoUC(AssinaturaService assinaturaService) {
+    public ListarTodasAssinaturasUC(AssinaturaService assinaturaService) {
         this.assinaturaService = assinaturaService;
     }
 
-    public List<AssinaturaDTO> run(AssinaturaStatusEnum tipo) {
-        return assinaturaService.listaAssinaturaPorTipo(tipo).stream().map(Assinatura::fromModelToDTO)
+    public List<AssinaturaDTO> run() {
+        return assinaturaService.listaTodasAssinaturas().stream().map(Assinatura::fromModelToDTO)
                 .collect(Collectors.toList());
     }
 

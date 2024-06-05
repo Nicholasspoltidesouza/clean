@@ -3,6 +3,7 @@ package com.projarc.clean.persistence.entity;
 import java.util.Date;
 
 import com.projarc.clean.domain.models.PagamentoModel;
+import com.projarc.clean.persistence.enumeration.PagamentoStatusEnum;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -38,12 +39,20 @@ public class Pagamento {
     @Column(name = "promocao")
     private String promocao;
 
-    public Pagamento(Long id, Assinatura assinatura, Float valorPago, Date dataPagamento, String promocao) {
+    @Column(name = "status")
+    private PagamentoStatusEnum status;
+
+    public Pagamento() {
+    }
+
+    public Pagamento(Long id, Assinatura assinatura, Float valorPago, Date dataPagamento, String promocao,
+            PagamentoStatusEnum status) {
         this.id = id;
         this.assinatura = assinatura;
         this.valorPago = valorPago;
         this.dataPagamento = dataPagamento;
         this.promocao = promocao;
+        this.status = status;
     }
 
     public static PagamentoModel toPagamentoModel(Pagamento pagamento) {
@@ -52,7 +61,8 @@ public class Pagamento {
                 pagamento.getAssinatura().toAssinaturaModel(),
                 pagamento.getValorPago(),
                 pagamento.getDataPagamento(),
-                pagamento.getPromocao());
+                pagamento.getPromocao(),
+                pagamento.getStatus());
     }
 
     public static Pagamento fromPagamentoModel(PagamentoModel pagamentoModel) {
@@ -61,6 +71,7 @@ public class Pagamento {
                 Assinatura.fromAssinaturaModel(pagamentoModel.getAssinatura()),
                 pagamentoModel.getValorPago(),
                 pagamentoModel.getDataPagamento(),
-                pagamentoModel.getPromocao());
+                pagamentoModel.getPromocao(),
+                pagamentoModel.getStatus());
     }
 }

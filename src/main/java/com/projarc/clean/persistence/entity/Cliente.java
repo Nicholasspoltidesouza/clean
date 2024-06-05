@@ -1,5 +1,6 @@
 package com.projarc.clean.persistence.entity;
 
+import com.projarc.clean.application.dto.ClienteDTO;
 import com.projarc.clean.domain.models.ClienteModel;
 
 import jakarta.persistence.*;
@@ -34,5 +35,9 @@ public class Cliente {
 
     public static ClienteModel toClienteModel(Cliente cliente) {
         return new ClienteModel(cliente.getId(), cliente.getNome(), cliente.getEmail());
+    }
+
+    public static ClienteDTO fromModelToDTO(ClienteModel clienteModel) {
+        return new ClienteDTO(clienteModel.getId(), clienteModel.getNome(), clienteModel.getEmail());
     }
 }

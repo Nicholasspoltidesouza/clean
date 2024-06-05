@@ -1,18 +1,19 @@
-package com.projarc.clean.domain.models;
+package com.projarc.clean.application.dto;
 
 import java.util.Date;
 
+import com.projarc.clean.persistence.entity.Assinatura;
 import com.projarc.clean.persistence.enumeration.PagamentoStatusEnum;
 
-public class PagamentoModel {
+public class PagamentoDTO {
     private Long id;
-    private AssinaturaModel assinatura;
+    private Assinatura assinatura;
     private Float valorPago;
     private Date dataPagamento;
     private String promocao;
     private PagamentoStatusEnum status;
 
-    public PagamentoModel(Long id, AssinaturaModel assinatura, Float valorPago, Date dataPagamento, String promocao,
+    public PagamentoDTO(Long id, Assinatura assinatura, Float valorPago, Date dataPagamento, String promocao,
             PagamentoStatusEnum status) {
         this.id = id;
         this.assinatura = assinatura;
@@ -30,11 +31,11 @@ public class PagamentoModel {
         this.id = id;
     }
 
-    public AssinaturaModel getAssinatura() {
+    public Assinatura getAssinatura() {
         return assinatura;
     }
 
-    public void setAssinatura(AssinaturaModel assinatura) {
+    public void setAssinatura(Assinatura assinatura) {
         this.assinatura = assinatura;
     }
 
@@ -72,12 +73,7 @@ public class PagamentoModel {
 
     @Override
     public String toString() {
-        return "PagamentoModel{" +
-                "id=" + id +
-                ", assinatura=" + assinatura +
-                ", valorPago=" + valorPago +
-                ", dataPagamento=" + dataPagamento +
-                ", promocao='" + promocao + '\'' +
-                '}';
+        return "PagamentoDTO [id=" + id + ", assinatura=" + assinatura + ", valorPago=" + valorPago + ", dataPagamento="
+                + dataPagamento + ", promocao=" + promocao + ", status=" + status + "]";
     }
 }

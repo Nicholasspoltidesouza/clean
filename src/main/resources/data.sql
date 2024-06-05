@@ -14,9 +14,10 @@ insert into aplicativos (id, nome, custo_mensal) values (2, 'Prime Video', 20.0)
 insert into aplicativos (id, nome, custo_mensal) values (3, 'HBO', 35.0);
 insert into aplicativos (id, nome, custo_mensal) values (4, 'Disney', 40.5);
 insert into aplicativos (id, nome, custo_mensal) values (5, 'Crunchyroll', 28.0);
-
-insert into assinaturas (id, cliente_id, aplicativo_id, data_inicio, data_fim, status) values (1, 1, 1, '2024-01-01', '2024-02-01', 1);
-insert into assinaturas (id, cliente_id, aplicativo_id, data_inicio, data_fim, status) values (2, 2, 2, '2024-01-01', '2024-02-01', 1);
-insert into assinaturas (id, cliente_id, aplicativo_id, data_inicio, data_fim, status) values (3, 3, 3, '2024-01-01', '2024-02-01', 1);
-insert into assinaturas (id, cliente_id, aplicativo_id, data_inicio, data_fim, status) values (4, 4, 4, '2024-01-01', '2024-02-01', 1);
-insert into assinaturas (id, cliente_id, aplicativo_id, data_inicio, data_fim, status) values (5, 7, 5, '2024-01-01', '2024-02-01', 1);
+insert into assinaturas (id, cliente_id, aplicativo_id, data_inicio, data_fim, status) values (2, 2, 2, '2024-01-01', '2024-02-01', 0);
+insert into assinaturas (id, cliente_id, aplicativo_id, data_inicio, data_fim, status) values (3, 3, 3, '2024-01-01', '2024-02-01', 0);
+insert into assinaturas (id, cliente_id, aplicativo_id, data_inicio, data_fim, status) values (1, 1, 1, '2024-01-01', '2024-02-01', 0);
+insert into assinaturas (id, cliente_id, aplicativo_id, data_inicio, data_fim, status) values (4, 4, 4, '2024-01-01', '2024-02-01', 0);
+insert into assinaturas (id, cliente_id, aplicativo_id, data_inicio, data_fim, status) values (5, 7, 5, '2024-01-01', '2024-02-01', 0);
+insert into assinaturas (id, cliente_id, aplicativo_id, data_inicio, data_fim, status) values (6, 8, 5, '2023-01-01', '2023-02-01', 1);
+insert into assinaturas (id, cliente_id, aplicativo_id, data_inicio, data_fim, status) values (7, 9, 3, '2023-01-01', '2023-02-01', 1);

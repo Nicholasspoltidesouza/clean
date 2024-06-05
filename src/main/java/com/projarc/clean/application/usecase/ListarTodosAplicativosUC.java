@@ -9,13 +9,15 @@ import org.springframework.stereotype.Component;
 import com.projarc.clean.application.dto.AplicativoDTO;
 import com.projarc.clean.domain.service.AplicativoService;
 
+import lombok.RequiredArgsConstructor;
+
 @Component
 public class ListarTodosAplicativosUC {
 
     private AplicativoService aplicativoService;
 
     @Autowired
-    public void setAplicativoService(AplicativoService aplicativoService) {
+    public ListarTodosAplicativosUC(AplicativoService aplicativoService) {
         this.aplicativoService = aplicativoService;
     }
 

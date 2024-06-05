@@ -1,8 +1,8 @@
 package com.projarc.clean.persistence.enumeration;
 
 public enum AssinaturaStatusEnum {
-    ATIVA(1),
-    CANCELADA(0);
+    ATIVA(0),
+    CANCELADA(1);
 
     private Integer status;
 

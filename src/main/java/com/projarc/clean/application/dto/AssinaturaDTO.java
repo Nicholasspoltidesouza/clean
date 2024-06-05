@@ -1,22 +1,26 @@
 package com.projarc.clean.application.dto;
 
+import java.util.Date;
+
+import com.projarc.clean.persistence.enumeration.AssinaturaStatusEnum;
+
 public class AssinaturaDTO {
 
     private Long id;
     private ClienteDTO cliente;
     private AplicativoDTO aplicativo;
-    private String dataInicio;
-    private String dataFim;
-    private String status;
+    private Date dataInicio;
+    private Date dataFim;
+    private AssinaturaStatusEnum status;
 
-    public AssinaturaDTO(Long id, ClienteDTO cliente, AplicativoDTO aplicativo, String dataInicio, String dataFim,
-            String status) {
+    public AssinaturaDTO(Long id, ClienteDTO cliente, AplicativoDTO aplicativo, Date dataInicio, Date dataFim,
+            AssinaturaStatusEnum assinaturaStatusEnum) {
         this.id = id;
         this.cliente = cliente;
         this.aplicativo = aplicativo;
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
-        this.status = status;
+        this.status = assinaturaStatusEnum;
 
     }
 
@@ -44,37 +48,33 @@ public class AssinaturaDTO {
         this.aplicativo = aplicativo;
     }
 
-    public String getDataInicio() {
+    public Date getDataInicio() {
         return dataInicio;
     }
 
-    public void setDataInicio(String dataInicio) {
+    public void setDataInicio(Date dataInicio) {
         this.dataInicio = dataInicio;
     }
 
-    public String getDataFim() {
+    public Date getDataFim() {
         return dataFim;
     }
 
-    public void setDataFim(String dataFim) {
+    public void setDataFim(Date dataFim) {
         this.dataFim = dataFim;
     }
 
-    public String getStatus() {
+    public AssinaturaStatusEnum getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(AssinaturaStatusEnum status) {
         this.status = status;
     }
 
     @Override
     public String toString() {
         return "AssinaturaDTO [id=" + id + ", cliente=" + cliente + ", aplicativo=" + aplicativo + ", dataInicio="
-                + dataInicio + ", dataFim=" + dataFim + ", status=" + status + ", getId()=" + getId()
-                + ", getCliente()=" + getCliente() + ", getAplicativo()=" + getAplicativo() + ", getDataInicio()="
-                + getDataInicio() + ", getDataFim()=" + getDataFim() + ", getStatus()=" + getStatus() + ", getClass()="
-                + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+                + dataInicio + ", dataFim=" + dataFim + ", status=" + status + "]";
     }
-
 }

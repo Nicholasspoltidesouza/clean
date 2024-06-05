@@ -9,6 +9,9 @@ import org.springframework.stereotype.Component;
 
 import com.projarc.clean.application.dto.ClienteDTO;
 import com.projarc.clean.domain.service.ClienteService;
+import com.projarc.clean.persistence.entity.Cliente;
+
+import lombok.RequiredArgsConstructor;
 
 @Component
 public class ListarTodosClientesUC {
@@ -21,7 +24,7 @@ public class ListarTodosClientesUC {
     }
 
     public Collection<ClienteDTO> run() {
-        return clienteService.listaTodosClientes().stream().map(ClienteDTO::fromModel)
+        return clienteService.listaTodosClientes().stream().map(Cliente::fromModelToDTO)
                 .collect(Collectors.toList());
     }
 

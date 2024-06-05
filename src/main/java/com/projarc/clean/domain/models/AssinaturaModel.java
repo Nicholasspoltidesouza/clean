@@ -20,7 +20,9 @@ public class AssinaturaModel {
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
         this.status = status;
+    }
 
+    public AssinaturaModel() {
     }
 
     public Long getId() {

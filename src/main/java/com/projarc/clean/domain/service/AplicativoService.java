@@ -1,16 +1,14 @@
 package com.projarc.clean.domain.service;
 
-import com.projarc.clean.domain.models.AplicativoModel;
-import com.projarc.clean.domain.repository.IAplicativoRepository;
-import com.projarc.clean.persistence.entity.Aplicativo;
-
-import lombok.RequiredArgsConstructor;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.projarc.clean.domain.models.AplicativoModel;
+import com.projarc.clean.domain.repository.IAplicativoRepository;
+
+import lombok.RequiredArgsConstructor;
 
 @Service
 public class AplicativoService {
@@ -23,5 +21,9 @@ public class AplicativoService {
 
     public List<AplicativoModel> listaTodosAplicativos() {
         return aplicativoRepository.findAll();
+    }
+
+    public AplicativoModel buscarPorId(Long id) {
+        return aplicativoRepository.findById(id);
     }
 }

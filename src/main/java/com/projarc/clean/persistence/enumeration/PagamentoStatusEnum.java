@@ -1,8 +1,8 @@
 package com.projarc.clean.persistence.enumeration;
 
 public enum PagamentoStatusEnum {
-    PAGO(1),
-    PENDENTE(0);
+    PAGAMENTO_OK(1),
+    VALOR_INCORRETO(0);
 
     private Integer status;
 

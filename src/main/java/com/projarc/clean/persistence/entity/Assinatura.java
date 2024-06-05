@@ -2,6 +2,7 @@ package com.projarc.clean.persistence.entity;
 
 import java.util.Date;
 
+import com.projarc.clean.application.dto.AssinaturaDTO;
 import com.projarc.clean.domain.models.AssinaturaModel;
 import com.projarc.clean.persistence.enumeration.AssinaturaStatusEnum;
 
@@ -46,6 +47,9 @@ public class Assinatura {
     @Enumerated(EnumType.ORDINAL)
     private AssinaturaStatusEnum status;
 
+    public Assinatura() {
+    }
+
     public Assinatura(Long id, Aplicativo aplicativo, Cliente cliente, Date dataInicio, Date dataFim,
             AssinaturaStatusEnum status) {
         this.id = id;
@@ -78,5 +82,15 @@ public class Assinatura {
                 assinaturaModel.getDataInicio(),
                 assinaturaModel.getDataFim(),
                 assinaturaModel.getStatus());
+    }
+
+    public static AssinaturaDTO fromModelToDTO(AssinaturaModel a) {
+        return new AssinaturaDTO(
+                a.getId(),
+                Cliente.fromModelToDTO(a.getCliente()),
+                Aplicativo.fromModelToDTO(a.getAplicativo()),
+                a.getDataInicio(),
+                a.getDataFim(),
+                a.getStatus());
     }
 }

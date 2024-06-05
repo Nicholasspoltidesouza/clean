@@ -8,18 +8,24 @@ import org.springframework.stereotype.Service;
 import com.projarc.clean.domain.models.ClienteModel;
 import com.projarc.clean.domain.repository.IClienteRepository;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
 public class ClienteService {
 
     private IClienteRepository clienteRepository;
 
     @Autowired
-    public void setClienteRepository(IClienteRepository clienteRepository) {
+    public ClienteService(IClienteRepository clienteRepository) {
         this.clienteRepository = clienteRepository;
     }
 
     public List<ClienteModel> listaTodosClientes() {
         return clienteRepository.findAll();
+    }
+
+    public ClienteModel buscarPorId(Long id) {
+        return clienteRepository.findById(id);
     }
 
 }

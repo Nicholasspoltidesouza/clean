@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.projarc.clean.domain.models.AssinaturaModel;
 import com.projarc.clean.domain.models.PagamentoModel;
 import com.projarc.clean.domain.repository.IPagamentoRepository;
+import com.projarc.clean.persistence.enumeration.PagamentoStatusEnum;
 
 @Service
 public class PagamentoService {
@@ -18,10 +19,20 @@ public class PagamentoService {
         this.pagamentoRepository = pagamentoRepository;
     }
 
-    public PagamentoModel realizarPagamento(AssinaturaModel assinatura, Float valorPago, Date dataPagamento,
-            String promocao) {
-        PagamentoModel pagamento = new PagamentoModel(null, assinatura, valorPago, dataPagamento, promocao);
-        pagamentoRepository.save(pagamento);
-        return pagamento;
-    }
+    // public PagamentoModel realizarPagamento(AssinaturaModel assinatura, Float
+    // valorPago, Date dataPagamento,
+    // String promocao, PagamentoStatusEnum status) {
+    // if (valorPago < assinatura.getAplicativo().getCustoMensal() || valorPago >
+    // assinatura.getAplicativo().getCustoMensal()){
+    // PagamentoModel pagamento = new PagamentoModel(null, assinatura, valorPago,
+    // dataPagamento, promocao,
+    // PagamentoStatusEnum.VALOR_INCORRETO);
+    // }else{
+    // PagamentoModel pagamento = new PagamentoModel(null, assinatura, valorPago,
+    // dataPagamento, promocao,
+    // PagamentoStatusEnum.PAGAMENTO_OK);
+    // }
+    // pagamentoRepository.save(pagamento);
+    // return pagamento;
+    // }
 }

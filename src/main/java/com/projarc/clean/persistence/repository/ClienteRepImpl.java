@@ -4,15 +4,14 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Repository;
+
 import com.projarc.clean.domain.models.ClienteModel;
 import com.projarc.clean.domain.repository.IClienteRepository;
 import com.projarc.clean.persistence.entity.Cliente;
 
 import lombok.RequiredArgsConstructor;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Repository;
 
 @RequiredArgsConstructor
 @Repository

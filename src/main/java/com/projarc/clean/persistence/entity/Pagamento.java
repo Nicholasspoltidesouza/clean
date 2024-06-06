@@ -8,11 +8,11 @@ import com.projarc.clean.persistence.enumeration.PagamentoStatusEnum;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,10 +21,9 @@ import lombok.Setter;
 @Setter
 @Data
 @Entity
-@Table(name = "pagamentos")
+@Table(name = "pagamentos", uniqueConstraints = @UniqueConstraint(columnNames = { "id" }))
 public class Pagamento {
     @Id
-    @GeneratedValue
     private Long id;
 
     @ManyToOne

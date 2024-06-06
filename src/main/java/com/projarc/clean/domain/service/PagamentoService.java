@@ -1,12 +1,14 @@
 package com.projarc.clean.domain.service;
 
-import java.util.Date;
+import java.sql.Date;
+import java.time.LocalDate;
 
 import org.springframework.stereotype.Service;
 
 import com.projarc.clean.domain.models.AssinaturaModel;
 import com.projarc.clean.domain.models.PagamentoModel;
 import com.projarc.clean.domain.repository.IPagamentoRepository;
+import com.projarc.clean.persistence.enumeration.AssinaturaStatusEnum;
 import com.projarc.clean.persistence.enumeration.PagamentoStatusEnum;
 
 import lombok.RequiredArgsConstructor;
@@ -20,7 +22,7 @@ public class PagamentoService {
 
         PagamentoModel pagamento = new PagamentoModel();
         pagamento.setAssinatura(assinatura);
-        pagamento.setDataPagamento(new Date());
+        pagamento.setDataPagamento(Date.valueOf(LocalDate.now()));
         pagamento.setValorPago(valorPago);
 
         if (valorPago < AssinaturaModel.getAplicativo()
@@ -29,7 +31,8 @@ public class PagamentoService {
             pagamento.setValorEstornado(AssinaturaModel.getAplicativo().getCustoMensal() - valorPago);
         } else {
             pagamento.setStatus(PagamentoStatusEnum.PAGAMENTO_OK);
-
+            assinatura.setStatus(AssinaturaStatusEnum.ATIVA);
+            assinatura.setDataFim(Date.valueOf(LocalDate.now().plusMonths(1)));
         }
         if (promocao != null && promocao != "") {
             pagamento.setPromocao(promocao);

@@ -1,7 +1,5 @@
 package com.projarc.clean.application.dto;
 
-import com.projarc.clean.domain.models.ClienteModel;
-
 public class ClienteDTO {
 
     private Long id;

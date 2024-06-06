@@ -8,8 +8,6 @@ import org.springframework.stereotype.Service;
 import com.projarc.clean.domain.models.ClienteModel;
 import com.projarc.clean.domain.repository.IClienteRepository;
 
-import lombok.RequiredArgsConstructor;
-
 @Service
 public class ClienteService {
 

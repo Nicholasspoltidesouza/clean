@@ -1,6 +1,6 @@
 package com.projarc.clean.persistence.entity;
 
-import java.util.Date;
+import java.sql.Date;
 
 import com.projarc.clean.application.dto.AssinaturaDTO;
 import com.projarc.clean.domain.models.AssinaturaModel;
@@ -10,7 +10,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -27,7 +26,6 @@ import lombok.Setter;
 @Table(name = "assinaturas", uniqueConstraints = @UniqueConstraint(columnNames = { "id" }))
 public class Assinatura {
     @Id
-    @GeneratedValue
     private Long id;
 
     @ManyToOne

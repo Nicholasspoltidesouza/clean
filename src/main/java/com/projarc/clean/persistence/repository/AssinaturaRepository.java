@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.projarc.clean.domain.models.AssinaturaModel;
@@ -23,4 +24,7 @@ public interface AssinaturaRepository extends JpaRepository<Assinatura, Long> {
     List<Assinatura> findAllByAplicativoId(Long codigoAplicativo);
 
     Optional<Assinatura> findById(Long codigoAssinatura);
+
+    @Query(value = "SELECT id FROM assinaturas ORDER BY id DESC LIMIT 1", nativeQuery = true)
+    Long findLastId();
 }

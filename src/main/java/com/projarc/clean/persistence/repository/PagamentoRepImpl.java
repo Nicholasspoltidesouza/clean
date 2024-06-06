@@ -18,8 +18,18 @@ public class PagamentoRepImpl implements IPagamentoRepository {
 
     @Override
     public PagamentoModel save(PagamentoModel pagamento) {
+        if (pagamentoRepository.findLastId() == null) {
+            pagamento.setId(1L);
+        } else {
+            pagamento.setId(pagamentoRepository.findLastId() + 1);
+        }
         pagamentoRepository.save(Pagamento.fromPagamentoModel(pagamento));
         return pagamento;
+    }
+
+    @Override
+    public Long findLastId() {
+        return pagamentoRepository.findLastId();
     }
 
 }

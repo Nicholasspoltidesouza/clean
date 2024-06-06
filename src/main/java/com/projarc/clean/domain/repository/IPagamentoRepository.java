@@ -4,4 +4,6 @@ import com.projarc.clean.domain.models.PagamentoModel;
 
 public interface IPagamentoRepository {
     PagamentoModel save(PagamentoModel pagamento);
+
+    Long findLastId();
 }

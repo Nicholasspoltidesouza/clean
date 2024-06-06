@@ -3,7 +3,6 @@ package com.projarc.clean.persistence.repository;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
@@ -23,6 +22,11 @@ public class AssinaturaRepImpl implements IAssinaturaRepository {
 
     @Override
     public AssinaturaModel save(AssinaturaModel assinatura) {
+        if (assinaturaRepository.findLastId() == null) {
+            assinatura.setId(1L);
+        } else {
+            assinatura.setId(assinaturaRepository.findLastId() + 1);
+        }
         assinaturaRepository.save(Assinatura.fromAssinaturaModel(assinatura));
         return assinatura;
     }
@@ -53,5 +57,10 @@ public class AssinaturaRepImpl implements IAssinaturaRepository {
     @Override
     public AssinaturaModel findById(Long codigoAssinatura) {
         return assinaturaRepository.findById(codigoAssinatura).map(Assinatura::toAssinaturaModel).orElse(null);
+    }
+
+    @Override
+    public Long findLastId() {
+        return assinaturaRepository.findLastId();
     }
 }

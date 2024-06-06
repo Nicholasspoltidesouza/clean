@@ -1,7 +1,5 @@
 package com.projarc.clean.domain.models;
 
-import com.projarc.clean.persistence.entity.Cliente;
-
 public class ClienteModel {
     private Long id;
     private String nome;

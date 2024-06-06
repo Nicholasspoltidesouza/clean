@@ -1,6 +1,6 @@
 package com.projarc.clean.domain.models;
 
-import java.util.Date;
+import java.sql.Date;
 
 import com.projarc.clean.persistence.enumeration.AssinaturaStatusEnum;
 

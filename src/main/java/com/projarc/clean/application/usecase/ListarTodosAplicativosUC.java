@@ -10,8 +10,6 @@ import com.projarc.clean.application.dto.AplicativoDTO;
 import com.projarc.clean.domain.service.AplicativoService;
 import com.projarc.clean.persistence.entity.Aplicativo;
 
-import lombok.RequiredArgsConstructor;
-
 @Component
 public class ListarTodosAplicativosUC {
 

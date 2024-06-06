@@ -3,21 +3,15 @@ package com.projarc.clean.domain.service;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.projarc.clean.application.dto.AssinaturaNovaDTO;
 import com.projarc.clean.domain.models.AplicativoModel;
 import com.projarc.clean.domain.models.AssinaturaModel;
 import com.projarc.clean.domain.models.ClienteModel;
 import com.projarc.clean.domain.repository.IAplicativoRepository;
 import com.projarc.clean.domain.repository.IAssinaturaRepository;
 import com.projarc.clean.domain.repository.IClienteRepository;
-import com.projarc.clean.persistence.entity.Aplicativo;
-import com.projarc.clean.persistence.entity.Assinatura;
-import com.projarc.clean.persistence.entity.Cliente;
 import com.projarc.clean.persistence.enumeration.AssinaturaStatusEnum;
 
 import lombok.RequiredArgsConstructor;

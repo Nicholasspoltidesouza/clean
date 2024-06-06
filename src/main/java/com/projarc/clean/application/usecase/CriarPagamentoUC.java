@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 import com.projarc.clean.application.dto.PagamentoDTO;
 import com.projarc.clean.domain.service.AssinaturaService;
 import com.projarc.clean.domain.service.PagamentoService;
-import com.projarc.clean.persistence.entity.Assinatura;
 import com.projarc.clean.persistence.entity.Pagamento;
 
 import lombok.RequiredArgsConstructor;

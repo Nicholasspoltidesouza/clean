@@ -3,7 +3,6 @@ package com.projarc.clean.domain.repository;
 import java.util.List;
 
 import com.projarc.clean.domain.models.AssinaturaModel;
-import com.projarc.clean.persistence.entity.Assinatura;
 import com.projarc.clean.persistence.enumeration.AssinaturaStatusEnum;
 
 public interface IAssinaturaRepository {
@@ -18,4 +17,6 @@ public interface IAssinaturaRepository {
     List<AssinaturaModel> findAllByAplicativoId(Long codigoAplicativo);
 
     AssinaturaModel findById(Long codigoAssinatura);
+
+    Long findLastId();
 }

@@ -3,7 +3,6 @@ package com.projarc.clean.application.usecase;
 import org.springframework.stereotype.Service;
 
 import com.projarc.clean.application.dto.AssinaturaDTO;
-import com.projarc.clean.application.dto.AssinaturaNovaDTO;
 import com.projarc.clean.domain.service.AssinaturaService;
 import com.projarc.clean.persistence.entity.Assinatura;
 

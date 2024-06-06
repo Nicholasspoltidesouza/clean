@@ -7,9 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.projarc.clean.domain.models.AplicativoModel;
 import com.projarc.clean.domain.repository.IAplicativoRepository;
-import com.projarc.clean.persistence.entity.Aplicativo;
-
-import lombok.RequiredArgsConstructor;
 
 @Service
 public class AplicativoService {
